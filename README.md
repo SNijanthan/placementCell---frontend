@@ -16,10 +16,10 @@
 ### 🔹 Core Libraries:
 
 - `react` → Core UI framework
-- `react-router-dom` → Handles routing (if applicable)
+- `react-router-dom` →
 - `axios` → For API calls
 - `daisyui` → UI components for styling
-- `@heroicons/react` → Icons for UI (if applicable)
+- `Icons` → Icons for UI
 
 ### 🔹 Development Dependencies:
 
@@ -34,6 +34,6 @@
 
 ## 🔗 API Integration
 
-Uses Axios to fetch and interact with the backend APIs
-Authentication handled using JWT tokens
-Displays real-time data fetched from the backend
+- Uses Axios to fetch and interact with the backend APIs
+- Authentication handled using JWT tokens
+- Displays real-time data fetched from the backend
