@@ -30,12 +30,12 @@ const Login = () => {
     <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box">
       <fieldset className="fieldset w-full p-4 rounded-box">
         <legend className="fieldset-legend text-center text-3xl font-light">
-          Login
+          Log In
         </legend>
         <label className="fieldset-label">Email</label>
         <input
           type="email"
-          className="input w-full my-3 py-6"
+          className="input w-full my-3 py-6 focus:outline-none"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -43,7 +43,7 @@ const Login = () => {
         <label className="fieldset-label">Password</label>
         <input
           type="text"
-          className="input w-full my-3 py-6"
+          className="input w-full my-3 py-6 focus:outline-none"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -55,9 +55,16 @@ const Login = () => {
           Login
         </button>
       </fieldset>
-      <div className="p-5">
+      <div className="px-5 py-2">
         <p>
-          New user ? <Link to="/signup">Signup</Link> here ..!
+          New user ?{" "}
+          <Link
+            to="/signup"
+            className="text-sky-400 hover:underline hover:underline-offset-5"
+          >
+            Signup
+          </Link>{" "}
+          here
         </p>
       </div>
     </div>
