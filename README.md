@@ -9,17 +9,16 @@
 - **Library**: React.js
 - **Styling**: Tailwind CSS, DaisyUI
 - **State Management**:
-- **Routing**:
+- **Routing**: React-Router-Dom
 
 ## 📦 Dependencies
 
 ### 🔹 Core Libraries:
 
 - `react` → Core UI framework
-- `react-router-dom` →
+- `react-router-dom` → Handles routing
 - `axios` → For API calls
 - `daisyui` → UI components for styling
-- `Icons` → Icons for UI
 
 ### 🔹 Development Dependencies:
 

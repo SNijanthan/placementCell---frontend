@@ -1,0 +1,67 @@
+import axios from "axios";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Signup from "./Signup";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:7000/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      console.log(res.data.existingUser);
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.message);
+      }
+    }
+  };
+
+  return (
+    <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box">
+      <fieldset className="fieldset w-full p-4 rounded-box">
+        <legend className="fieldset-legend text-center text-3xl font-light">
+          Login
+        </legend>
+        <label className="fieldset-label">Email</label>
+        <input
+          type="email"
+          className="input w-full my-3 py-6"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label className="fieldset-label">Password</label>
+        <input
+          type="text"
+          className="input w-full my-3 py-6"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && (
+          <p className="text-red-500 font-semibold text-[13px]">{error}</p>
+        )}
+        <button className="btn bg-green-600 mt-4 py-6" onClick={handleLogin}>
+          Login
+        </button>
+      </fieldset>
+      <div className="p-5">
+        <p>
+          New user ? <Link to="/signup">Signup</Link> here ..!
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
