@@ -1,12 +1,13 @@
-import React from "react";
 import Students from "./Students";
 import Interview from "./Interview";
+import Results from "./Results";
 
 const Main = () => {
   return (
-    <div className="w-5/6 m-auto flex items-center justify-around">
+    <div className="mt-5">
       <Students />
-      <Interview />
+      {/* <Interview /> */}
+      {/* <Results /> */}
     </div>
   );
 };

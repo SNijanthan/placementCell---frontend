@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Signup = () => {
     try {
       setError("");
       setSuccess("");
-      const res = await axios.post("http://localhost:7000/auth/signup", {
+      const res = await axios.post(BASE_URL + "/auth/signup", {
         email,
         password,
       });
@@ -46,7 +47,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box">
+      <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box mt-32">
         <fieldset className="fieldset w-full p-4 rounded-box">
           <legend className="fieldset-legend text-center text-3xl font-light">
             Sign Up

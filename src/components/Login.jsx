@@ -1,24 +1,31 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Signup from "./Signup";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("niju@gmail.com");
+  const [password, setPassword] = useState("Niju@123");
   const [error, setError] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:7000/auth/login",
+        BASE_URL + "/auth/login",
         {
           email,
           password,
         },
         { withCredentials: true }
       );
-      console.log(res.data.existingUser);
+      // console.log(res.data.existingUser);
+      dispatch(addUser(res.data.existingUser));
+      navigate("/");
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -27,7 +34,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box">
+    <div className="w-2/6 m-auto bg-gray-950  p-5 flex  flex-col justify-center rounded-box mt-32">
       <fieldset className="fieldset w-full p-4 rounded-box">
         <legend className="fieldset-legend text-center text-3xl font-light">
           Log In
