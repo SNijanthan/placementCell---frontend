@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Interview = () => {
   const [interviews, setInterviews] = useState([]);
@@ -13,7 +14,7 @@ const Interview = () => {
         withCredentials: true,
       });
       setInterviews(
-        Array.isArray(res?.data?.interviews) ? res.data.students : []
+        Array.isArray(res?.data?.interviews) ? res.data.interviews : []
       );
     } catch (error) {
       setError(error?.data?.message);
@@ -61,7 +62,9 @@ const Interview = () => {
         </>
       )}
       <div className="flex justify-end mt-5">
-        <button className="btn bg-green-700 mr-8">Add Interview</button>
+        <button className="btn bg-green-700 mr-8">
+          <Link to="/interview">Add Interview</Link>
+        </button>
         <button className="btn bg-green-700 mr-32">Assign Interview</button>
       </div>
     </div>
