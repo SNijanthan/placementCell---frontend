@@ -63,13 +63,13 @@ const Students = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex justify-end">
-            <button className="btn bg-green-700 mr-32 mt-5">
-              <Link to="/student">Add student</Link>
-            </button>
-          </div>
         </>
       )}
+      <div className="flex justify-end">
+        <button className="btn bg-green-700 mr-32 mt-5">
+          <Link to="/student">Add student</Link>
+        </button>
+      </div>
     </>
   );
 };

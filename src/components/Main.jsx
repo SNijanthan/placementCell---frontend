@@ -6,8 +6,8 @@ const Main = () => {
   return (
     <div className="mt-5">
       <Students />
-      {/* <Interview /> */}
-      {/* <Results /> */}
+      <Interview />
+      <Results />
     </div>
   );
 };
