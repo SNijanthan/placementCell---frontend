@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
-import { addResult } from "../utils/resultSlice";
+import { setResult } from "../utils/resultSlice";
 
 const useFetchResult = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const useFetchResult = () => {
           const res = await axios.get(BASE_URL + "/results", {
             withCredentials: true,
           });
-          dispatch(addResult(res?.data?.results));
+          dispatch(setResult(res?.data?.results));
         } catch (error) {
           console.error("Error fetching students:", error);
         }
@@ -23,7 +23,7 @@ const useFetchResult = () => {
 
       fetchResult();
     }
-  }, [dispatch]);
+  }, [dispatch, result]);
 };
 
 export default useFetchResult;

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addInterview } from "../utils/interviewSlice";
 
 const AddInterview = () => {
   const [interviewDate, setInterviewDate] = useState("");
@@ -9,6 +11,7 @@ const AddInterview = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleAddInterview = async () => {
     try {
@@ -17,7 +20,8 @@ const AddInterview = () => {
         { interviewDate, companyName },
         { withCredentials: true }
       );
-      console.log(res);
+
+      dispatch(addInterview(res.data.interview));
       navigate("/");
     } catch (error) {
       setError(error?.response?.data?.message);

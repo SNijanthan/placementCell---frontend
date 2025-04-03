@@ -4,10 +4,16 @@ const interviewSlice = createSlice({
   name: "interview",
   initialState: [],
   reducers: {
-    addInterview: (state, action) => action.payload,
-    removeInterview: () => null,
+    setInterview: (state, action) => {
+      return action.payload;
+    },
+    addInterview: (state, action) => {
+      state.push(action.payload);
+    },
+    removeInterview: () => [],
   },
 });
 
 export default interviewSlice.reducer;
-export const { addInterview, removeInterview } = interviewSlice.actions;
+export const { setInterview, addInterview, removeInterview } =
+  interviewSlice.actions;

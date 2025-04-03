@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
-import { addInterview } from "../utils/interviewSlice";
+import { setInterview } from "../utils/interviewSlice";
 
 const useFetchInterview = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const useFetchInterview = () => {
           const res = await axios.get(BASE_URL + "/interviews", {
             withCredentials: true,
           });
-          dispatch(addInterview(res.data?.interviews));
+          dispatch(setInterview(res.data?.interviews));
         } catch (error) {
           console.error("Error fetching students:", error);
         }
@@ -23,7 +23,7 @@ const useFetchInterview = () => {
 
       fetchInterview();
     }
-  }, [dispatch]);
+  }, [dispatch, interview]);
 };
 
 export default useFetchInterview;

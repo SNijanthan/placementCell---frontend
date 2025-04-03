@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addStudent } from "../utils/studentSlice";
 
 const AddStudent = () => {
   const [name, setName] = useState("");
@@ -13,17 +15,20 @@ const AddStudent = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleAddStudents = async () => {
     try {
-      await axios.post(
+      const res = await axios.post(
         BASE_URL + "/students",
         { name, college, dsaScore, webDScore, reactScore, status },
         { withCredentials: true }
       );
+
+      dispatch(addStudent(res.data?.student));
       navigate("/");
     } catch (error) {
-      if (error) {
+      if (error.status === 400 || error.status === 409) {
         setError(error.response.data.message);
       }
       console.log(error);

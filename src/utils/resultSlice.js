@@ -4,10 +4,15 @@ const resultSlice = createSlice({
   name: "result",
   initialState: [],
   reducers: {
-    addResult: (state, action) => action.payload,
+    setResult: (state, action) => {
+      return action.payload;
+    },
+    addResult: (state, action) => {
+      state.push(action.payload);
+    },
     removeResult: () => null,
   },
 });
 
 export default resultSlice.reducer;
-export const { addResult, removeResult } = resultSlice.actions;
+export const { setResult, addResult, removeResult } = resultSlice.actions;

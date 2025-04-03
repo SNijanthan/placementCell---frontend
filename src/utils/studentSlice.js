@@ -4,10 +4,15 @@ const studentSlice = createSlice({
   name: "student",
   initialState: [],
   reducers: {
-    addStudent: (state, action) => action.payload,
-    removeStudent: () => null,
+    setStudent: (state, action) => {
+      return action.payload;
+    },
+    addStudent: (state, action) => {
+      state.push(action.payload);
+    },
+    removeStudent: () => [],
   },
 });
 
-export const { addStudent, removeStudent } = studentSlice.actions;
+export const { setStudent, addStudent, removeStudent } = studentSlice.actions;
 export default studentSlice.reducer;
