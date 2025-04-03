@@ -1,30 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BASE_URL } from "../utils/constants";
+import { useSelector } from "react-redux";
+import useFetchResult from "../customHooks/useFetchResult";
 
 const Results = () => {
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
+  useFetchResult();
 
-  const fetchResultsData = async () => {
-    try {
-      const res = await axios.get(BASE_URL + "/results", {
-        withCredentials: true,
-      });
-      setResults(Array.isArray(res?.data?.results) ? res?.data?.results : []);
-    } catch (error) {
-      console.log(error);
-      setError(error?.data?.message);
-    }
-  };
+  const results = useSelector((store) => store.result);
 
-  useEffect(() => {
-    fetchResultsData();
-  }, []);
-
-  return error ? (
-    <p className="text-red-500 font-semibold text-[13px]">{error}</p>
-  ) : (
+  return (
     <div>
       <h1 className="text-center my-5 text-5xl font-light text-purple-500">
         INTERVIEW RESULTS

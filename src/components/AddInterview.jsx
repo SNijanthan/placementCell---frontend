@@ -32,7 +32,7 @@ const AddInterview = () => {
             ADD INTERVIEW
           </legend>
           <div className="grid grid-cols-1">
-            <label className="fieldset-label">Date</label>
+            <label className="fieldset-label">Interview Date</label>
             <input
               type="date"
               className="input w-full my-3 py-3 focus:outline-none"
@@ -40,11 +40,11 @@ const AddInterview = () => {
               value={interviewDate}
               onChange={(e) => setInterviewDate(e.target.value)}
             />
-            <label className="fieldset-label">Name</label>
+            <label className="fieldset-label">Company Name</label>
             <input
               type="text"
               className="input w-full my-3 py-3 focus:outline-none"
-              placeholder="College"
+              placeholder="Company Name"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
             />

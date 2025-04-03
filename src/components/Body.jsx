@@ -10,6 +10,7 @@ const Body = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const fetchUser = async () => {
     try {
       const res = await axios.get(BASE_URL + "/view-profile", {

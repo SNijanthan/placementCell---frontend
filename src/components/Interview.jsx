@@ -1,33 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useFetchInterview from "../customHooks/useFetchInterview";
+import { useSelector } from "react-redux";
 
 const Interview = () => {
-  const [interviews, setInterviews] = useState([]);
+  const interviews = useSelector((store) => store.interview);
+  useFetchInterview();
 
-  const [error, setError] = useState("");
-
-  const fetchInterviews = async () => {
-    try {
-      const res = await axios.get(BASE_URL + "/interviews", {
-        withCredentials: true,
-      });
-      setInterviews(
-        Array.isArray(res?.data?.interviews) ? res.data.interviews : []
-      );
-    } catch (error) {
-      setError(error?.data?.message);
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchInterviews();
-  }, []);
-  return error ? (
-    <p className="text-red-500 font-semibold text-[13px]">{error}</p>
-  ) : (
+  return (
     <div>
       <h1 className="text-center my-5 text-5xl font-light text-purple-500">
         INTERVIEW DETAILS
