@@ -19,8 +19,9 @@ const Interview = () => {
             <table className="table">
               <thead>
                 <tr className="text-center font-mono">
-                  <th>Company Name</th>
                   <th>Interview Date</th>
+                  <th>Company Name</th>
+                  <th>Student Name</th>
                 </tr>
               </thead>
               <tbody>
@@ -29,10 +30,18 @@ const Interview = () => {
                     key={interview._id}
                     className="hover:bg-base-300 text-center"
                   >
-                    <td>{interview.companyName}</td>
                     <td>
                       {new Date(interview.interviewDate).toLocaleDateString()}
                     </td>
+                    <td>{interview.companyName}</td>
+                    {interview.students.map((student) => (
+                      <td
+                        key={student._id}
+                        className="flex items-center justify-center"
+                      >
+                        {student.name}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
@@ -44,7 +53,9 @@ const Interview = () => {
         <button className="btn bg-green-700 mr-8">
           <Link to="/interview">Add Interview</Link>
         </button>
-        <button className="btn bg-green-700 mr-32">Assign Interview</button>
+        <button className="btn bg-green-700 mr-32">
+          <Link to="/assigninterview">Assign Interview</Link>
+        </button>
       </div>
     </div>
   );
