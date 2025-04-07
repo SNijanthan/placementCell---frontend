@@ -19,6 +19,10 @@ const AddResults = () => {
   const navigate = useNavigate();
 
   const handleUpdateResult = async () => {
+    if (student.length === 0 || company.length === 0) {
+      setError("Fields cannot be empty");
+      return;
+    }
     try {
       const res = await axios.post(
         BASE_URL + "/results",
