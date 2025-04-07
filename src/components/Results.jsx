@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import useFetchResult from "../customHooks/useFetchResult";
+import { Link } from "react-router-dom";
 
 const Results = () => {
   useFetchResult();
@@ -31,10 +32,10 @@ const Results = () => {
                     key={result._id}
                     className="hover:bg-base-300 text-center"
                   >
-                    <td>{result.interview.companyName}</td>
+                    <td>{result.interview?.companyName}</td>
                     <td>
                       {new Date(
-                        result.interview.interviewDate
+                        result.interview?.interviewDate
                       ).toLocaleDateString()}
                     </td>
                     <td>{result.student.name}</td>
@@ -47,7 +48,9 @@ const Results = () => {
         </>
       )}
       <div className="flex justify-end mt-5 mr-32 my-10">
-        <button className="btn bg-green-700">Update Results</button>
+        <button className="btn bg-green-700">
+          <Link to="/update-results">Update Results</Link>
+        </button>
       </div>
     </div>
   );

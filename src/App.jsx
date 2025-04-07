@@ -9,6 +9,7 @@ import appStore from "./utils/appStore";
 import AddStudent from "./components/AddStudent";
 import AddInterview from "./components/AddInterview";
 import AssignInterview from "./components/AssignInterview";
+import AddResults from "./components/AddResults";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
               <Route path="/signup" element={<Signup />} />
               <Route path="/student" element={<AddStudent />} />
               <Route path="/interview" element={<AddInterview />} />
-              <Route path="/assigninterview" element={<AssignInterview />} />
+              <Route path="/assign-interview" element={<AssignInterview />} />
+              <Route path="/update-results" element={<AddResults />} />
               <Route path="/" element={<Main />} />
             </Route>
           </Routes>

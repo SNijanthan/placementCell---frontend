@@ -54,7 +54,7 @@ const Interview = () => {
           <Link to="/interview">Add Interview</Link>
         </button>
         <button className="btn bg-green-700 mr-32">
-          <Link to="/assigninterview">Assign Interview</Link>
+          <Link to="/assign-interview">Assign Interview</Link>
         </button>
       </div>
     </div>

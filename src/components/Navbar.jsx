@@ -23,27 +23,29 @@ const Navbar = () => {
 
   const handleDownloadReport = async () => {
     try {
-      const response = await axios.get(BASE_URL + "/results/download-csv", {
+      console.log("Downloading report..."); // Debugging
+      const response = await axios.get(`${BASE_URL}/results/download-csv`, {
         withCredentials: true,
-        responseType: "blob", // Important for handling file downloads
+        responseType: "blob",
       });
 
-      // Create a Blob from the response data
-      const blob = new Blob([response.data], { type: "text/csv" });
+      console.log("File received:", response);
+
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
       const url = window.URL.createObjectURL(blob);
 
-      // Create a temporary link to trigger the download
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "results.csv"); // Set the file name
+      link.setAttribute("download", "results.xlsx");
       document.body.appendChild(link);
       link.click();
 
-      // Clean up
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.log("Error downloading file:", error);
+      console.error("Error downloading file:", error);
     }
   };
 
